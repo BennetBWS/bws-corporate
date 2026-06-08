@@ -10,7 +10,13 @@ export default function Footer() {
         <div className="foot-grid">
           <div>
             <Link className="brand" href="/">
-              <Image src={IMAGES.logo} alt={COMPANY.nameEn} width={186} height={32} />
+              <Image
+                src={IMAGES.logo}
+                alt={COMPANY.nameEn}
+                width={186}
+                height={32}
+                style={{ width: "120px", height: "auto" }}
+              />
             </Link>
             <address>
               {COMPANY.addressLines.map((line, i) => (

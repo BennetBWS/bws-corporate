@@ -16,7 +16,7 @@ export function Business() {
             </h2>
           </div>
         </Reveal>
-        <Reveal className="biz-grid">
+        <Reveal className="biz-grid justify-items-center">
           {BUSINESS.items.map((item) => {
             const Icon = ICONS[item.icon as keyof typeof ICONS];
             return (
