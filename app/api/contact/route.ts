@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { COMPANY } from "@/lib/constants";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || COMPANY.email;
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
 
@@ -45,6 +43,8 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY ?? "");
 
     const html = `
       <h2>お問い合わせを受信しました</h2>
