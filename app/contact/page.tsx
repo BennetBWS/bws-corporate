@@ -45,7 +45,17 @@ export default function ContactPage() {
                         </span>
                         <div>
                           <div className="lbl">{item.label}</div>
-                          <div className="val">{item.value}</div>
+                          <div className="val">
+                            {item.icon === "mail" ? (
+                              <a href={`mailto:${item.value}`}>{item.value}</a>
+                            ) : item.icon === "tel" ? (
+                              <a href={`tel:${item.value.replace(/[^0-9]/g, "")}`}>
+                                {item.value}
+                              </a>
+                            ) : (
+                              item.value
+                            )}
+                          </div>
                         </div>
                       </li>
                     );

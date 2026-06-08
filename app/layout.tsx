@@ -17,11 +17,18 @@ export const metadata: Metadata = {
     apple: "/Logo.png",
   },
   openGraph: {
-    title: `${COMPANY.nameJa}`,
-    description: "卓越した豊かさを、すべての人に。",
+    title: "株式会社Bennet BWS | Web制作・開発・コンサルティング",
+    description: "卓越した豊かさを、すべての人に。東京・丸の内のWeb制作会社。",
+    url: "https://www.bws-bennet.com",
     type: "website",
     locale: "ja_JP",
-    images: ["/Logo.png"],
+    images: [
+      { url: "https://www.bws-bennet.com/ogp.png", width: 1200, height: 630 },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://www.bws-bennet.com/ogp.png"],
   },
 };
 

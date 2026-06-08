@@ -1,4 +1,4 @@
-import { BUSINESS, HISTORY, COMPANY_TABLE } from "@/lib/constants";
+import { BUSINESS, HISTORY, COMPANY_TABLE, COMPANY } from "@/lib/constants";
 import Reveal from "./Reveal";
 import { ICONS } from "./Icons";
 
@@ -80,7 +80,20 @@ export function Company() {
           {COMPANY_TABLE.rows.map((row) => (
             <div className="row" key={row.k}>
               <div className="k">{row.k}</div>
-              <div className="v">{row.v}</div>
+              <div className="v">
+                {row.k === "商号" ? (
+                  <>
+                    {COMPANY.nameJa}
+                    <br />({COMPANY.nameEn})
+                  </>
+                ) : row.k === "電話" ? (
+                  <a href={`tel:${COMPANY.tel.replace(/[^0-9]/g, "")}`}>
+                    {row.v}
+                  </a>
+                ) : (
+                  row.v
+                )}
+              </div>
             </div>
           ))}
         </Reveal>

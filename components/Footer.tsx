@@ -50,10 +50,14 @@ export default function Footer() {
           <div>
             <h4>{FOOTER.contactHeading}</h4>
             <div className="ct">
-              <IconMail /> {COMPANY.email}
+              <IconMail />{" "}
+              <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
             </div>
             <div className="ct">
-              <IconTel /> {COMPANY.tel}
+              <IconTel />{" "}
+              <a href={`tel:${COMPANY.tel.replace(/[^0-9]/g, "")}`}>
+                {COMPANY.tel}
+              </a>
             </div>
           </div>
         </div>

@@ -5,10 +5,11 @@ import { Services } from "@/components/Services";
 import { CeoSection } from "@/components/CeoSection";
 import { Business, History, Company } from "@/components/Sections";
 import { CtaSection } from "@/components/CtaSection";
+import PageTransition from "@/components/PageTransition";
 
 export default function HomePage() {
   return (
-    <>
+    <PageTransition>
       <Nav />
       <main>
         <Hero />
@@ -21,6 +22,6 @@ export default function HomePage() {
         <CtaSection />
       </main>
       <Footer />
-    </>
+    </PageTransition>
   );
 }

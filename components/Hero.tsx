@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HERO, IMAGES, STATS } from "@/lib/constants";
 import Reveal from "./Reveal";
+import CountUpNum from "./CountUpNum";
 
 export function Hero() {
   return (
@@ -51,7 +52,9 @@ export function Stats() {
       <Reveal className="container">
         {STATS.map((s) => (
           <div className="stat" key={s.cap}>
-            <div className="num">{s.num}</div>
+            <div className="num">
+              <CountUpNum value={s.num} />
+            </div>
             <div className="cap">{s.cap}</div>
           </div>
         ))}
