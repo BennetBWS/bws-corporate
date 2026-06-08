@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 /**
  * ページ読み込み時のローディング画面 + コンテンツのフェードイン演出。
@@ -72,22 +73,7 @@ export default function PageTransition({
           className={`loader${loaded ? " loader--exit" : ""}`}
           aria-hidden="true"
         >
-          <div className="loader-stage">
-            <div className="loader-cube">
-              <span className="face" />
-              <span className="face" />
-              <span className="face" />
-              <span className="face" />
-              <span className="face" />
-              <span className="face" />
-            </div>
-          </div>
-          <p className="loader-text">
-            Now Loading
-            <span className="dot">.</span>
-            <span className="dot">.</span>
-            <span className="dot">.</span>
-          </p>
+          <Loading />
         </div>
       )}
     </>

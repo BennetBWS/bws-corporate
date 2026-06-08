@@ -41,7 +41,7 @@ body{
   overflow-wrap:anywhere;
   line-break:strict;
 }
-h1,h2,h3,.h-bar h2,.biz-card span{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.h-bar h2{word-break:keep-all;overflow-wrap:break-word}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -158,13 +158,14 @@ a{color:inherit;text-decoration:none}
 .ceo p + p{margin-top:14px}
 
 /* ===== BUSINESS ===== */
+#business{overflow-x:hidden}
 .biz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;box-sizing:border-box}
 .biz-card{width:100%;min-width:0;border:1px solid var(--line);border-radius:8px;background:#fff;padding:30px 18px;text-align:center;
   display:flex;flex-direction:column;align-items:center;gap:16px;transition:border-color .2s,transform .2s,box-shadow .2s}
 .biz-card:hover{transform:translateY(-4px);border-color:#d6d6db;box-shadow:0 24px 40px -30px rgba(10,12,30,.3)}
 .biz-card .glyph{width:46px;height:46px;color:var(--ink-2)}
 .biz-card .glyph svg{width:46px;height:46px;stroke-width:1.5}
-.biz-card span{font-size:15px;font-weight:600;letter-spacing:.01em}
+.biz-card span{font-size:15px;font-weight:600;letter-spacing:.01em;word-break:normal;overflow-wrap:anywhere}
 
 /* ===== HISTORY ===== */
 .timeline{position:relative;margin-top:8px;max-width:760px}
@@ -266,6 +267,14 @@ a{color:inherit;text-decoration:none}
   .table .v{padding:0;font-size:16px;font-weight:500;color:var(--ink)}
 }
 
+/* Businessグリッド: スマホは2カラム固定幅で画面内に収める */
+@media(max-width:639px){
+  .biz-grid{
+    grid-template-columns:calc(50% - 8px) calc(50% - 8px);
+    gap:16px;padding:0 16px;
+  }
+}
+
 /* ===== ローディング画面 + ページトランジション ===== */
 .page-content{opacity:0;transform:scale(.97);transform-origin:center top}
 .page-content--in{animation:content-in .6s cubic-bezier(.16,1,.3,1) forwards}
@@ -285,26 +294,32 @@ a{color:inherit;text-decoration:none}
   to{opacity:0;transform:scale(1.05)}
 }
 
-.loader-stage{width:80px;height:80px;perspective:600px}
-.loader-cube{
-  position:relative;width:80px;height:80px;
-  transform-style:preserve-3d;
-  animation:cube-spin 3s linear infinite;
+/* バウンスする3つのドット */
+.loader .wrapper{width:200px;height:60px;position:relative;z-index:1}
+.loader .circle{
+  width:20px;height:20px;position:absolute;border-radius:50%;
+  left:15%;transform-origin:50%;
+  animation:circle7124 .5s alternate infinite ease;
 }
-.loader-cube .face{
-  position:absolute;top:0;left:0;width:80px;height:80px;
-  background:transparent;border:2px solid transparent;
-  border-image:linear-gradient(135deg,#007cf0,#7928ca,#ff4d4d) 1;
+.loader .circle:nth-child(1){background:linear-gradient(135deg,#007cf0,#00dfd8)}
+.loader .circle:nth-child(2){left:45%;animation-delay:.2s;background:linear-gradient(135deg,#7928ca,#ff0080)}
+.loader .circle:nth-child(3){left:auto;right:15%;animation-delay:.3s;background:linear-gradient(135deg,#ff4d4d,#f9cb28)}
+@keyframes circle7124{
+  0%{top:60px;height:5px;border-radius:50px 50px 25px 25px;transform:scaleX(1.7)}
+  40%{height:20px;border-radius:50%;transform:scaleX(1)}
+  100%{top:0%}
 }
-.loader-cube .face:nth-of-type(1){transform:rotateY(0deg) translateZ(40px)}
-.loader-cube .face:nth-of-type(2){transform:rotateY(90deg) translateZ(40px)}
-.loader-cube .face:nth-of-type(3){transform:rotateY(180deg) translateZ(40px)}
-.loader-cube .face:nth-of-type(4){transform:rotateY(270deg) translateZ(40px)}
-.loader-cube .face:nth-of-type(5){transform:rotateX(90deg) translateZ(40px)}
-.loader-cube .face:nth-of-type(6){transform:rotateX(-90deg) translateZ(40px)}
-@keyframes cube-spin{
-  from{transform:rotateX(0deg) rotateY(0deg)}
-  to{transform:rotateX(360deg) rotateY(360deg)}
+.loader .shadow{
+  width:20px;height:4px;border-radius:50%;background-color:rgba(0,0,0,0.15);
+  position:absolute;top:62px;transform-origin:50%;z-index:-1;left:15%;filter:blur(1px);
+  animation:shadow046 .5s alternate infinite ease;
+}
+.loader .shadow:nth-child(4){left:45%;animation-delay:.2s}
+.loader .shadow:nth-child(5){left:auto;right:15%;animation-delay:.3s}
+@keyframes shadow046{
+  0%{transform:scaleX(1.5)}
+  40%{transform:scaleX(1);opacity:.7}
+  100%{transform:scaleX(.2);opacity:.4}
 }
 
 .loader-text{
@@ -320,5 +335,5 @@ a{color:inherit;text-decoration:none}
 @media(prefers-reduced-motion:reduce){
   .page-content{opacity:1;transform:none;animation:none}
   .loader{display:none}
-  .loader-cube,.loader-text .dot{animation:none}
+  .loader .circle,.loader .shadow,.loader-text .dot{animation:none}
 }
