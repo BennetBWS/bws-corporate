@@ -160,7 +160,6 @@ export const COMPANY_TABLE = {
     { k: "設立", v: COMPANY.established },
     { k: "所在地", v: `${COMPANY.postalCode} ${COMPANY.address}` },
     { k: "電話", v: COMPANY.tel },
-    { k: "代表者", v: COMPANY.representative },
     { k: "従業員数", v: COMPANY.employees },
     { k: "前年売上", v: COMPANY.revenue },
   ],
