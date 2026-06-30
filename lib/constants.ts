@@ -146,7 +146,13 @@ export const HISTORY = {
   items: [
     { date: "Jan 2023", text: "株式会社Bennet BWS 設立" },
     { date: "Apr 2023", text: "NWA（Next World Academy）開校" },
-    { date: "Jul 2024", text: "Bennet Web Services リリース" },
+    { date: "Jul 2023", text: "NWA新規カリキュラムを追加" },
+    { date: "Oct 2023", text: "案件獲得支援プログラムを本格始動" },
+    { date: "Apr 2024", text: "NWA受講生向けLMS（学習管理システム）を開発開始" },
+    { date: "Jul 2025", text: "Bennet Web Services リリース — 法人向けWeb制作事業を体系化" },
+    { date: "Apr 2026", text: "NWA AIコース新設" },
+    { date: "Jun 2026", text: "NWA Vibe Codingブートキャンプ開講 — AI時代の新しい開発手法を体系化" },
+    { date: "Jun 2026", text: "NWA 卒業生サポートコミュニティ発足" },
   ],
 } as const;
 
