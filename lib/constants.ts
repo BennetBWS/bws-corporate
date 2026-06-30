@@ -145,7 +145,6 @@ export const HISTORY = {
   title: "会社設立から現在まで",
   items: [
     { date: "Jan 2023", text: "株式会社Bennet BWS 設立" },
-    { date: "Jan 2023", text: "WSPコンサルティング リリース" },
     { date: "Apr 2023", text: "NWA（Next World Academy）開校" },
     { date: "Jul 2024", text: "Bennet Web Services リリース" },
   ],
